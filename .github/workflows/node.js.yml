@@ -6,8 +6,7 @@ name: Node CI
 on: [push]
 
 jobs:
-      - uses: actions/upload-artifact@master
-    needs: build
+    - uses: actions/upload-artifact@master
           name: webpack artifacts
           path: public/
 
@@ -21,6 +20,7 @@ jobs:
           npm run build
 
   test:
+    needs: build
     - uses: actions/download-artifact@main
       with:
         name: webpack artifacts
